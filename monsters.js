@@ -1,0 +1,1 @@
+//initializes the monsters array
