@@ -1,10 +1,9 @@
-let xp = 0;
 let health = 100;
 let gold = 50;
 let currentWeapon = 0;
 let fighting;
 let monsterHealth;
-let inventory = ["stick"];
+let inventory = ["unarmed"];
 
 const button1 = document.querySelector('#button1');
 const button2 = document.querySelector("#button2");
@@ -17,28 +16,12 @@ const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 const weapons = [
-  { name: 'stick', power: 5 },
+  { name: 'unarmed', power: 10 },
   { name: 'dagger', power: 30 },
   { name: 'claw hammer', power: 50 },
   { name: 'sword', power: 100 }
 ];
-const monsters = [
-  {
-    name: "slime",
-    level: 2,
-    health: 15
-  },
-  {
-    name: "fanged beast",
-    level: 8,
-    health: 60
-  },
-  {
-    name: "dragon",
-    level: 20,
-    health: 300
-  }
-]
+
 const locations = [
   {
     name: "town square",
@@ -94,6 +77,7 @@ const locations = [
 button1.onclick = goStore;
 button2.onclick = goCave;
 button3.onclick = fightDragon;
+button4.onclick = restartGame;
 
 function update(location) {
   monsterStats.style.display = "none";
@@ -241,12 +225,25 @@ function restart() {
   health = 100;
   gold = 50;
   currentWeapon = 0;
-  inventory = ["stick"];
+  inventory = ["unarmed"];
   goldText.innerText = gold;
   healthText.innerText = health;
   xpText.innerText = xp;
   goTown();
 }
+
+function restartGame() {
+    xp = 0;
+    health = 100;
+    gold = 50;
+    currentWeapon = 0;
+    inventory = ["unarmed"];
+    goldText.innerText = gold;
+    healthText.innerText = health;
+    xpText.innerText = xp;
+    goTown();
+    text.innerText = "Welcome to Ball Doors Gate. You are a brave warrior who has stumbled on to a troubled town plagued with monster attacks. You are looking for a Raga, a fabled blade to destroy the High Dragon. You have heard the blade passed through this town. You stop to ask questions."
+  }
 
 function easterEgg() {
   update(locations[7]);
